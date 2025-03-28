@@ -50,14 +50,14 @@
             android:orientation="horizontal">
                 <Button
                     style="@style/calc_btn_func"
-                    android:text="%"/>
+                    android:text="@string/calc_btn_percent"/>
                 <Button
                     style="@style/calc_btn_func"
-                    android:text="%"/>
+                    android:text="@string/calc_btn_ce"/>
 
                 <Button
                     style="@style/calc_btn_func"
-                    android:text="%"/>
+                    android:text="@string/calc_btn_clr"/>
                 <Button
                     style="@style/calc_btn_func"
                     android:text="@string/calc_btn_backspace"/>
@@ -69,7 +69,7 @@
             android:orientation="horizontal">
             <Button
                 style="@style/calc_btn_func"
-                android:text="%"/>
+                android:text="@string/calc_btn_fraction"/>
             <Button
                 style="@style/calc_btn_func"
                 android:text="@string/calc_btn_sqr"/>
@@ -79,7 +79,7 @@
                 android:text="@string/calc_btn_sqrt"/>
             <Button
                 style="@style/calc_btn_func"
-                android:text="%"/>
+                android:text="@string/calc_btn_divide"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                 android:text="@string/calc_btn_9"/>
             <Button
                 style="@style/calc_btn_func"
-                android:text="%"/>
+                android:text="@string/calc_btn_multiple"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                 android:text="4"/>
             <Button
                 style="@style/calc_btn_func"
-                android:text="%"/>
+                android:text="@string/calc_btn_minus"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                 android:text="@string/calc_btn_3"/>
             <Button
                 style="@style/calc_btn_func"
-                android:text="%"/>
+                android:text="@string/calc_btn_plus"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -144,18 +144,18 @@
             android:layout_height="0dp"
             android:orientation="horizontal">
             <Button
-                style="@style/calc_btn_func"
-                android:text="%"/>
+                style="@style/calc_btn_digit"
+                android:text="@string/calc_btn_plus_minus"/>
             <Button
                 style="@style/calc_btn_digit"
                 android:text="@string/calc_btn_0"/>
 
             <Button
-                style="@style/calc_btn_func"
-                android:text="%"/>
+                style="@style/calc_btn_digit"
+                android:text="@string/calc_btn_comma"/>
             <Button
-                style="@style/calc_btn_func"
-                android:text="%"/>
+                style="@style/calc_btn_equal"
+                android:text="@string/calc_btn_equal"/>
         </LinearLayout>
     </LinearLayout>
 

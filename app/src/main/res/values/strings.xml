@@ -16,4 +16,16 @@
     <string name="calc_btn_backspace">\u232B</string>
     <string name="calc_btn_sqr">&#x1D465;\u00B2</string>
     <string name="calc_btn_sqrt">\u221A&#x1D465;\u0305</string>
+    <string name="calc_btn_equal">\uFF1D</string>
+    <string name="calc_btn_multiple">\u2715</string>
+    <string name="calc_btn_divide">\u00F7</string>
+    <string name="calc_btn_plus">\uFF0B</string>
+    <string name="calc_btn_minus">\uFF0D</string>
+    <string name="calc_btn_plus_minus">\u00B1</string>
+    <string name="calc_btn_comma">\uFF0C</string>
+    <string name="calc_btn_percent">\uFF05</string>
+    <string name="calc_btn_fraction">\u215F&#x1D465;</string>
+    <string name="calc_btn_ce">CE</string>
+    <string name="calc_btn_clr">C</string>
+
 </resources>
