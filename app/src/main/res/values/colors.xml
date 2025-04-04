@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_layout_bg">#FCFF3B</color>
     <color name="main_tv_title">#2121F3</color>
+    <color name="rates_layout_bg">#FDFDFD</color>
+    <color name="rates_layout_fg">#323232</color>
 
     <color name="calc_layout_bg">#202020</color>
     <color name="calc_tv_expression">#9B9B9B</color>

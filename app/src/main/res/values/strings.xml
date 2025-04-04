@@ -2,6 +2,8 @@
     <string name="app_name">AndroidPv211</string>
     <string name="main_tv_title">Greating Android</string>
     <string name="main_btn_calc">Calculator</string>
+    <string name="main_btn_rates">Exchange</string>
+    <string name="rates_tv_title">Exchange from NBU</string>
 
     <string name="calc_btn_0">0</string>
     <string name="calc_btn_1">1</string>
@@ -29,3 +31,4 @@
     <string name="calc_btn_clr">C</string>
 
 </resources>
+    
