@@ -18,11 +18,29 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/rates_layout_fg"/>
+    <TextView
+        android:id="@+id/rates_tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:text="date"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/rates_layout_fg"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rates_rv_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <SearchView
+        android:id="@+id/rates_sv_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
 
 
 </LinearLayout>
