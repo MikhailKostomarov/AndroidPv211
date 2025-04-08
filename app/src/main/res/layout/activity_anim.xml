@@ -150,8 +150,6 @@
             android:layout_weight="1"
             app:tint="@color/main_layout_bg" />
 <!--            android:background="@color/main_tv_title"-->
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
