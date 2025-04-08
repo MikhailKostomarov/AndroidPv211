@@ -4,6 +4,14 @@
     <string name="main_btn_calc">Calculator</string>
     <string name="main_btn_rates">Exchange</string>
     <string name="rates_tv_title">Exchange from NBU</string>
+    <string name="main_btn_anim">Animation</string>
+    <string name="anim_tv_title">Animations</string>
+
+
+    <string name="anim_tv_alpha">Transparency</string>
+    <string name="anim_tv_rotate">Rotate</string>
+    <string name="anim_tv_rotate2">Rotate2</string>
+    <string name="anim_tv_scale">Scale</string>
 
     <string name="calc_btn_0">0</string>
     <string name="calc_btn_1">1</string>
