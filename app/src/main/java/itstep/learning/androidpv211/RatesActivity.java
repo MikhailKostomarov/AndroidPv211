@@ -1,5 +1,6 @@
 package itstep.learning.androidpv211;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,9 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -43,6 +46,7 @@ public class RatesActivity extends AppCompatActivity {
     private NbuRateAdapter nbuRateAdapter;
     private RecyclerView rvContainer;
     private TextView tvDate;
+    private String ratesDate="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,7 @@ public class RatesActivity extends AppCompatActivity {
         rvContainer.setLayoutManager(layoutManager);
         nbuRateAdapter=new NbuRateAdapter(nbuRates);
         rvContainer.setAdapter(nbuRateAdapter);
+        findViewById(R.id.rates_btn_date).setOnClickListener(this::onButtonClickChange);
 
 
         SearchView svFilter = findViewById(R.id.rates_sv_filter);
@@ -81,11 +86,40 @@ public class RatesActivity extends AppCompatActivity {
         });
     }
 
+    private void onButtonClickChange(View view){
+        Calendar calendar = Calendar.getInstance();
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                (dpView, year, month, dayOfMonth) -> {
+                    // Форматируем дату как yyyymmdd
+                    Calendar selectedDate = Calendar.getInstance();
+                    selectedDate.set(year, month, dayOfMonth);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.ROOT);
+                    ratesDate = sdf.format(selectedDate.getTime());
+
+                    // Загружаем курс на выбранную дату
+                    nbuRates.clear();
+                    CompletableFuture.supplyAsync(this::loadRates,pool)
+                            .thenAccept(this::parseNbuResponse).thenRun(this::showNbuRates);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
     private boolean onFilterChange(String s){
         Log.d("onFilterChange",s);
         nbuRateAdapter.setNbuRates(nbuRates.stream()
                 .filter(r->r.getCc().toUpperCase().contains(s.toUpperCase()))
                 .collect(Collectors.toList()));
+        if(nbuRates.stream().filter(r->r.getCc().toUpperCase().contains(s.toUpperCase()))
+                .collect(Collectors.toList()).isEmpty())
+        {
+            nbuRateAdapter.setNbuRates(nbuRates.stream()
+                    .filter(r -> r.getTxt().toUpperCase().contains(s.toUpperCase()))
+                    .collect(Collectors.toList()));
+        }
         return true;
     }
     private  void showNbuRates(){
@@ -110,8 +144,15 @@ public class RatesActivity extends AppCompatActivity {
         }
     }
     private String loadRates(){
+       //return Services.fetchUrl(nbuRatesUrs);
         try{
-            URL url=new URL(nbuRatesUrs);
+            URL url;
+            if(ratesDate!=""){
+                url=new URL("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date="+ratesDate+"&json");
+            }
+            else{
+                url=new URL(nbuRatesUrs);
+            }
             InputStream urlStream=url.openStream();
             ByteArrayOutputStream byteBuilder = new ByteArrayOutputStream();
             byte[] buffer=new byte[8192];
@@ -122,6 +163,7 @@ public class RatesActivity extends AppCompatActivity {
             String charsetName= StandardCharsets.UTF_8.name();
             String data = byteBuilder.toString(charsetName);
             urlStream.close();
+            ratesDate="";
             return data;
             //runOnUiThread(()->tvContainer.setText(data));
 

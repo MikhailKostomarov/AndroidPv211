@@ -17,9 +17,14 @@ public class NbuRateViewHolder extends RecyclerView.ViewHolder {
     private TextView tvReverse;
     private NbuRate nbuRate;
 
-
-
-
+    public NbuRateViewHolder(@NonNull View itemView) {
+        super(itemView);
+        tvTxt=itemView.findViewById(R.id.nbu_rate_txt);
+        tvRate=itemView.findViewById(R.id.nbu_rate_rate);
+        tvCc=itemView.findViewById(R.id.nbu_rate_cc);
+        tvRow=itemView.findViewById(R.id.nbu_rate_row);
+        tvReverse=itemView.findViewById(R.id.nbu_rate_row_reverse);
+    }
     private void showData(){
         tvTxt.setText(nbuRate.getTxt());
         tvCc.setText(nbuRate.getCc());
@@ -35,15 +40,6 @@ public class NbuRateViewHolder extends RecyclerView.ViewHolder {
     public void setNbuRate(NbuRate nbuRate) {
         this.nbuRate = nbuRate;
         showData();
-    }
-
-    public NbuRateViewHolder(@NonNull View itemView) {
-        super(itemView);
-        tvTxt=itemView.findViewById(R.id.nbu_rate_txt);
-        tvRate=itemView.findViewById(R.id.nbu_rate_rate);
-        tvCc=itemView.findViewById(R.id.nbu_rate_cc);
-        tvRow=itemView.findViewById(R.id.nbu_rate_row);
-        tvReverse=itemView.findViewById(R.id.nbu_rate_row_reverse);
     }
 }
 /*

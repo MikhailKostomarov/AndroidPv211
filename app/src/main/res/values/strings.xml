@@ -4,8 +4,22 @@
     <string name="main_btn_calc">Calculator</string>
     <string name="main_btn_rates">Exchange</string>
     <string name="rates_tv_title">Exchange from NBU</string>
+    <string name="rates_btn_date">Set date</string>
     <string name="main_btn_anim">Animation</string>
     <string name="anim_tv_title">Animations</string>
+    <string name="main_btn_chat">Chat</string>
+    <string name="chat_tv_title">ChatTitle</string>
+    <string name="chat_tv_author">Author:</string>
+    <string name="chat_author_hint">Your nickname</string>
+    <string name="chat_author_remember">Fix</string>
+    <string name="chat_send_hint">Your nickname</string>
+    <string name="chat_message_hint">Enter message</string>
+    <string name="chat_content_hint">Last messages</string>
+    <string name="chat_msg_no_text">Enter message</string>
+    <string name="chat_msg_no_author">Enter nickname</string>
+    <string name="chat_msg_no_send">Sending canceled</string>
+    <string name="chat_msg_no_send_btn">Understood</string>
+
 
 
     <string name="anim_tv_alpha">Transparency</string>
