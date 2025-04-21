@@ -173,7 +173,10 @@ public class ChatActivity extends AppCompatActivity {
     private void updateChat(){
         CompletableFuture.supplyAsync(()->Services.fetchUrl(chatUrl))
                 .thenApply(this::parseChatResponse)
-                .thenAccept(this::processChatResponse);
+                .thenAccept(this::processChatResponse).exceptionally(ex->{
+                    Log.i("updateChat", "Error chat update: " + ex.getMessage());
+                    return null;
+                });
         Log.i("updateChat", "updated");
         handler.postDelayed(this::updateChat,2000);
     }
@@ -323,6 +326,10 @@ public class ChatActivity extends AppCompatActivity {
         List<ChatMessage> res= new ArrayList<>();
         try{
             JSONObject root=new JSONObject(body);
+            int status = root.getInt("status");
+            if (status != 1) {
+                throw new RuntimeException("Server returned status: " + status);
+            }
 
             JSONArray arr = root.getJSONArray("data");
             int len= arr.length();
