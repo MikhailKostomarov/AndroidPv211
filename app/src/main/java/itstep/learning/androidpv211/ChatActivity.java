@@ -92,12 +92,13 @@ public class ChatActivity extends AppCompatActivity {
         pool= Executors.newFixedThreadPool( 3 );
         updateChat();
         etAuthor=findViewById(R.id.chat_et_author);
-        etAuthor.setText(loadAuthor());
+        //etAuthor.setText(loadAuthor());
 
         etMessage=findViewById(R.id.chat_et_message);
         rvContent=findViewById(R.id.chat_rv_content);
-        scRemember=findViewById(R.id.chat_switch_remember);
-        scRemember.setChecked(true);
+
+//        scRemember=findViewById(R.id.chat_switch_remember);
+//        scRemember.setChecked(true);
         isFirstSend=true;
 
         chatMessageAdapter=new ChatMessageAdapter(messages);
@@ -106,15 +107,16 @@ public class ChatActivity extends AppCompatActivity {
         rvContent.setLayoutManager(layoutManager);
         rvContent.setAdapter(chatMessageAdapter);
         findViewById(R.id.chat_btn_send).setOnClickListener(this::onSendClick);
-        restoreMessages();
-        registerChannel();
-        Intent intent=getIntent();
-        if(intent!=null){
-            String messageId=intent.getStringExtra("message_id");
-            if(messageId!=null){
-                Log.i("chat","Forwarded from notification "+messageId);
-            }
-        }
+
+//        restoreMessages();
+//        registerChannel();
+//        Intent intent=getIntent();
+//        if(intent!=null){
+//            String messageId=intent.getStringExtra("message_id");
+//            if(messageId!=null){
+//                Log.i("chat","Forwarded from notification "+messageId);
+//            }
+//        }
     }
 
     private void registerChannel(){
@@ -200,15 +202,24 @@ public class ChatActivity extends AppCompatActivity {
                     .show();
             return;
         }
+        /*
         if(isFirstSend){
             isFirstSend=false;
             if(scRemember.isChecked()){
                 saveAuthor(author);
             }
         }
+         */
         CompletableFuture.runAsync(
                 ()->sendChatMessage(new ChatMessage(author,message)),pool
         );
+        if(isFirstSend){
+            isFirstSend=false;
+            etAuthor.setText(author);
+            etAuthor.setFocusable(false);
+        }
+        etMessage.setText("");
+
     }
 
     private void saveMessages(){
@@ -346,7 +357,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         handler.removeMessages(0);
         pool.shutdownNow();
-        saveMessages();
+        //saveMessages();
         super.onDestroy();
     }
 
